@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="keywords" content="joe, الله يرحمك, yousef">
-  <meta name="description" content="موقع باسم 'الله يرحمك , يهدف الموقع الي تعزبة الناس علي من فارقوهم بشكل ساخر لكي يكونو افضل ولا يحزنو '">
-    <title>كل سنة وانت طيوب</title>
+  <meta name="keywords" content="joe, كل سنة وانت طيوب, yousef">
+  <meta name="description" content="موقع كل سنة وانت طيوب , يهدف الي تكوين مجتمع مترابط وجيد , ومخصص للناس الذين ليس لديهم صديق يهنئهم بعيد ميلادهم">
+  <title>كل سنة وانت طيوب</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
@@ -16,77 +16,123 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      margin: 0;
       background-color: #ffffff;
       color: rgb(0, 0, 0);
       text-align: center;
       font-family: "Cairo", serif;
+      padding: 20px;
     }
+
     h1 {
       color: rgb(255, 29, 255);
       font-weight: 900;
       letter-spacing: 2px;
-      font-size: 50px;
+      font-size: 3rem;
       padding: 20px;
     }
+
     .form-control {
       width: 100%;
       margin: 10px 0;
       padding: 15px;
       text-align: center;
+      font-size: 1rem;
     }
+
     #submitButton {
       padding: 15px 30px;
       background-color: rgb(255, 29, 255);
       border: none;
       color: white;
       cursor: pointer;
+      font-size: 1rem;
       transition: 0.3s;
     }
+
     #submitButton:hover {
       background-color: rgb(126, 17, 126);
     }
+
     #resultContent {
       display: none;
       padding: 20px;
     }
+
     .message {
       font-weight: 900;
-      font-size: 55px;
+      font-size: 2rem;
       color: rgb(255, 0, 191);
       opacity: 1;
       animation: fadeEffect 3s infinite;
     }
+
     img {
-      max-width: 100%;
+      width: 100%;
+      max-width: 500px;
       height: auto;
       margin-top: 20px;
       animation: fadeIn 1s forwards;
     }
+
     @keyframes fadeEffect {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    @media (max-width: 800px) {
-      h1 { font-size: 30px; }
-      h2 { font-size: 25px; }
-      .message { font-size: 30px; }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .message {
+        font-size: 1.5rem;
+      }
+
+      img {
+        max-width: 80%;
+      }
+    }
+
+    .ki {
+      position: fixed;
+      bottom: 40px;
+      /* right: 20px; */
+    text-align: center;
+    width: 100%;
+    }
+
+    .ki a {
+      text-decoration: none;
+      color: rgb(197, 0, 148);
+      font-weight: 900;
+      transition: 0.5s;
+    }
+
+    .ki a:hover {
+      color: rgb(128, 10, 118);
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div id="initialContent">
-      <h1>اهلا بكم في موقع  كل سنة وانت طيوب</h1>
+      <h1>اهلا بكم في موقع كل سنة وانت طيوب</h1>
       <h2>اكتب بيانات صاحب عيد الميلاد</h2>
       <div class="form-group">
         <input class="form-control" type="text" id="userName" placeholder="اسم الشخص">
         <input class="form-control" type="number" id="birthYear" placeholder="سنة الميلاد">
         <input class="form-control" type="text" id="deathYear" placeholder="مكان عيد الميلاد">
-        <input class="form-control" type="text" id="tribute" placeholder="اكتب  تهنئة">
+        <input class="form-control" type="text" id="tribute" placeholder="اكتب تهنئة">
         <button id="submitButton" class="btn btn-danger mt-3">إنشاء</button>
       </div>
     </div>
@@ -94,8 +140,7 @@
     <div id="resultContent">
       <div class="message" id="message"></div>
       <div class="details" id="details"></div>
-      <img src="./k.jpg" alt="صورة حلوة" id="sadImage">
-      <!-- <h6>تم الإنشاء بواسطة <span style="color: rgb(175, 35, 35);">يوسف</span></h6> -->
+      <img src="./k.jpg" alt="صورة حلوة" id="sadImage" class="responsive-image">
       <audio id="sadMusic" loop>
         <source src="Albumaty.Com.Hamada.Helal.Elnhrda.Eid.Melad.mp3" type="audio/mpeg">
       </audio>
@@ -124,44 +169,23 @@
         alert('من فضلك املأ جميع الحقول!');
         return;
       }
+
       initialContent.style.display = 'none';
-      message.textContent = ` كل سنة وانت طيوب يا ${userName}`;
+      message.textContent = `كل سنة وانت طيوب يا ${userName}`;
       details.innerHTML = `
         <p><strong>ولد في:</strong> ${birthYear}</p>
-        <p><strong> مكان عيد الميلاد:</strong> ${deathYear}</p>
+        <p><strong>مكان عيد الميلاد:</strong> ${deathYear}</p>
         <p>${tribute}</p>
       `;
       resultContent.style.display = 'block';
       sadMusic.play();
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-
-
+  
 <div class="ki">
   <a href="abo.html" target="_blank">عن المطور</a>
 </div>
-
-
-<style>
-  .ki{
-    position: fixed;
-    top: 800px;
-  }
-  .ki a{
-    text-decoration: none;
-    color: rgb(197, 0, 148);
-    font-weight: 900;
-    transition: 0.5s;
-  }
-  .ki a:hover{
-    color: rgb(128, 10, 118);
-  }
-</style>
-
-
-
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
 
 </html>
